@@ -33,10 +33,17 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   job2:
-    needs: [build]
+    needs: [build,job3]
     runs-on: windows-latest
     steps:
       - name: job2st1
         run: | 
           echo "done"
           echo "second line"
+  job3:
+      runs-on: windows-latest
+      steps:
+        - name: job2st1
+          run: | 
+            echo "done"
+            echo "second line"
